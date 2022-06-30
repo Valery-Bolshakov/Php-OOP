@@ -2,26 +2,29 @@
 
 class Write
 {
-    public $filename;  // путь к файлу
+    public $file;  // путь к файлу
     public $fp;  // указатель на открытый файл
 
 
-    public function __construct($filename)
+//    при создании нового экземпляра класса - аргументом указываем путь к файлу и название файла
+    public function __construct($file)
     {
-        /* путь к файлу аргументом в конструкторе*/
-        $this->filename = $filename;
+//         записываем путь к файлу в свойство $fale передавая его аргументом в конструкторе
+        $this->file = $file;
 
-        /*Открывает файл для чтения и записи; помещает указатель в конец файла.
-        Если файл не существует - пытается его создать. */
-        $this->fp = fopen($filename, 'a+');
-
-        /*проверяем доступность файла*/
-        if (is_writable($filename)) {
-            echo 'файл существует и доступен для записи <br>';
+//        проверяем доступность файла
+        if (is_writable($this->file)) {
+            echo "файл {$this->file} существует и доступен для записи <br>";
         } else {
-            echo "Файл недоступен для записи";
+            echo "Файл {$this->file} недоступен для записи";
             exit;
         }
+
+        /*если файл существует и доступен - записываем его в свойство $fp
+
+        Открывает файл для чтения и записи; помещает указатель в конец файла.
+        Если файл не существует - пытается его создать. */
+        $this->fp = fopen($this->file, 'a+');
 
 
     }
@@ -40,9 +43,12 @@ class Write
         /*fwrite(resource $stream, string $data, ?int $length = null): int|false*/
         /*функцию fwrite надо использовать совместно с функцией fopen, что бы файл был доступен*/
         /*конструкция запишет информацию в файл, или выкинет сообщение об ошибке*/
-        if (fwrite($this->fp, $text . PHP_EOL) === FALSE) {
-            echo 'запить не происходит';
-            exit;
+//        Добавили строку 1 Tuesday 14th of June 2022
+        if (fwrite($this->fp, $text . ', ' . date('l jS \of F Y') . PHP_EOL) == true) {
+//        if (fwrite($this->fp, $text . ', ' . date(DATE_RFC822) . PHP_EOL) == true) {
+            echo 'запить прошла успешно ' . date(DATE_RFC822) . ' <br>';
+        } else {
+            echo "ошибка записи в файл {$this->file} <br>";
         }
     }
 

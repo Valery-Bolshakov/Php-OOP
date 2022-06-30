@@ -1,26 +1,28 @@
 <?php
+
+/** Наследование. Часть 1 - 2 */
+
 error_reporting(-1);
 require_once 'classes/Product.php';
 require_once 'classes/NotebookProduct.php';
 require_once 'classes/BookProduct.php';
 
-/** Наследование. Часть 1 */
 
 function debug($data)
 {
     echo '<pre>' . print_r($data, 1) . '</pre>';
 }
 
-/* создаем обьект $book класса Product */
-$book = new BookProduct('Три мушкетера', 20,  700);
+/* создаем объекты(экземпляры) соответствующих классов */
 $notebook = new NotebookProduct('Dell', 1000, 'Intel');
+$book = new BookProduct('Три мушкетера', 20,  700);
 
 /* Распечатаем получившиеся объекты */
-debug($book);  // Product Object ( [name] => Три мушкетера [price] => 20  [cpu] =>   [numPages] => 1000 )
-debug($notebook);  // Product Object ( [name] => Dell [price] => 1000  [cpu] => 10  [numPages] => )
+debug($notebook);  // NotebookProduct Object ( [cpu] => Intel [name] => Dell [price] => 1000 )
+debug($book);  // BookProduct Object ( [numPages] => 700 [name] => Три мушкетера [price] => 20 )
 
 /* Вызываем метод getProduct и смотрим какие строки он сформировал */
-echo $book->getProduct();  // О товаре: Наименование: Три мушкетера Цена: 20 Кол-во страниц: 1000
 echo $notebook->getProduct();  // О товаре: Наименование: Dell Цена: 1000 Процессор: 10
+echo $book->getProduct();  // О товаре: Наименование: Три мушкетера Цена: 20 Кол-во страниц: 1000
 
 

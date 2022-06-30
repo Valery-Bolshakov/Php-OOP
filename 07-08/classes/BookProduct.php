@@ -4,6 +4,7 @@
 class BookProduct extends Product
 {
 
+    /** повторяем манипуляции с кодом как в классе NotebookProduct */
     public $numPages;
 
     public function __construct($name, $price, $numPages)
@@ -15,7 +16,7 @@ class BookProduct extends Product
     public function getProduct()
     {
         $out = parent::getProduct();
-        $out .= "Кол-во страниц: {$this->numPages}<br>";
+        $out .= "Кол-во страниц: {$this->numPages};<br>";
         return $out;
     }
 

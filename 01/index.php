@@ -9,8 +9,8 @@
 
 require_once 'FirstClass.php';  // подключаем файл класса
 
-$o1 = new FirstClass;  // создали новый экземпляр (объект) класса
+$o1 = new FirstClass();  // создали новый экземпляр (объект) класса
 var_dump($o1);  // object(FirstClass)#1 (0) { }  распечатаем что бы увидеть что это Объект класса
 
-$o2 = new FirstClass;
+$o2 = new FirstClass();
 var_dump($o2);  // object(FirstClass)#2 (0) { }  каждый объект имеет свой идетнификатор

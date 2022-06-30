@@ -8,14 +8,18 @@ class Car
     public $speed;
     public $brand;
 
+    /**
+     * Специальный метод __construct (если он написан в классе) - вызывается сразу при создании
+     * нового экземпляра класса
+     */
     /*Классическое использование данного метода*/
-    public function __construct($color, $wheels/* = 4*/, $speed, $brand)
+    public function __construct($color, $wheels, $speed, $brand)
     {
         $this->color = $color;
         $this->wheels = $wheels;
         $this->speed = $speed;
         $this->brand = $brand;
-        echo 'метод ' . __METHOD__ . ' - Вызывается при создании экземпляра класса <br>';
+        echo 'метод ' . __METHOD__ . ' - Вызывается ВСЕГДА при создании экземпляра класса <br>';
     }
 
     public function getCarInfo()

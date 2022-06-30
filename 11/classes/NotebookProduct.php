@@ -1,7 +1,7 @@
 <?php
 
 
-class NotebookProduct extends Product  // наследуем родительский класс
+class NotebookProduct extends Product  implements iGadget
 {
 
     /* обозначим общее свойство для данного класса */
@@ -18,6 +18,13 @@ class NotebookProduct extends Product  // наследуем родительс�
         $this->cpu = $cpu;
     }
 
+    /** реализуем метод подключаемого интерфейса */
+    public function getCase()
+    {
+        // TODO: Implement getCase() method.
+    }
+
+
     /* аналогично конструктору: */
     public function getProduct()
     {
@@ -29,13 +36,17 @@ class NotebookProduct extends Product  // наследуем родительс�
         return $out;
     }
 
-    /**
-     * @return mixed
-     */
     public function getCpu()
     {
         return $this->cpu;
     }
 
+    public function addProduct($name, $price, $numPages = 0)
+    {
+        // TODO: Implement addProduct() method.
+        var_dump($name);
+        var_dump($price);
+        var_dump($numPages);
+    }
 
 }
