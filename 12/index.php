@@ -23,7 +23,7 @@ function autoloder1($class)
 /** Создали функцию для автозагрузки интерфейсов из указанной дирректории */
 /*function autoloder2($class)
 {
-    $file = __DIR__ . "/classes/interfaces/{$class}.php";
+    $file = __DIR__ . "/app/interfaces/{$class}.php";
 //    проверим наличие нужного класса (file_exists()) и подключаем его, если он еще не был подключен
     if (file_exists($file)) {
         require_once $file;
